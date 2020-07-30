@@ -1,0 +1,16 @@
+---
+ - name: Simple Playbook to check switch status
+   hosts: switches
+   gather_facts: false
+   connection: local
+   tasks:
+     - name: run multiple commands on remote nodes
+       eos_command:
+        commands:
+         - show version
+         - show interfaces
+       register: output
+
+     - name: show output
+       debug:
+        var: output
