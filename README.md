@@ -9,21 +9,36 @@ Once the Arista switch is up on kvm - you can login with just using admin as a u
 
 
 arista-core1-veos>en
+
 arista-core1-veos#conf t
+
 arista-core1-veos(config)#int management 1
+
 arista-core1-veos(config-if-Ma1)#ip address 192.168.0.200 255.255.255.0
+
 arista-core1-veos(config-if-Ma1)#wr mem
+
 Copy completed successfully.
 
+
+
 arista-core1-veos(config-if-Ma1)#sh run int management 1
+
 interface Management1
+
    ip address 192.168.0.200/24
+   
 arista-core1-veos(config-if-Ma1)#
+
+
 
 Setup a password for login:
 
+
 arista-core1-veos(config-if-Ma1)#username admin secret password
+
 arista-core1-veos(config)#wr mem
+
 Copy completed successfully.
 
 
