@@ -1,16 +1,36 @@
 ---
- - name: Simple Playbook to check switch status
-   hosts: switches
-   gather_facts: false
-   connection: local
-   tasks:
-     - name: run multiple commands on remote nodes
-       eos_command:
-        commands:
-         - show version
-         - show interfaces
-       register: output
+  - name: Checking Arista Switches
+    hosts: switches
+    gather_facts: false
+    connection: local
 
-     - name: show output
-       debug:
-        var: output
+    vars:
+      cli:
+        host: "{{ ansible_host }}"
+        username: "admin"
+        password: "password"
+        authorize: true
+        transport: cli
+
+    tasks:
+      - name: Check Arista Switch Versions
+        eos_command:
+          commands:
+            - show version | i Arista
+          provider: "{{ cli }}"
+        register: output
+
+      - name: show output
+        debug:
+          var: output
+
+      - name: Check Management Port IP
+        eos_command:
+          commands:
+            - show run interface Management 1
+          provider: "{{ cli }}"
+        register: output
+
+      - name: show output
+        debug:
+          var: output
