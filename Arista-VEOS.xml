@@ -7,7 +7,7 @@
     <partition>/machine</partition>
   </resource>
   <os>
-    <type arch='x86_64' machine='pc-i440fx-1.5'>hvm</type>
+    <type arch='x86_64' machine='pc'>hvm</type>
     <boot dev='cdrom'/>
     <boot dev='hd'/>
   </os>
@@ -24,7 +24,7 @@
     <emulator>/usr/bin/qemu-system-x86_64</emulator>
     <disk type='file' device='disk'>
       <driver name='qemu' type='vmdk'/>
-      <source file='/var/lib/libvirt/images/vEOS-lab-4.20.15M.vmdk'/>
+      <source file='/var/lib/libvirt/images/vEOS-lab-4.20.15M.qcow2'/>
       <target dev='hda' bus='ide'/>
       <alias name='ide0-0-0'/>
       <address type='drive' controller='0' bus='0' target='0' unit='0'/>
