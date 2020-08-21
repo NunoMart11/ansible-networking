@@ -3,7 +3,7 @@ Networking Demos and Tests with Arista vEOS
 
 Testing Ansible etc on a virtual vEOS instance of an Arista swtich. This is done on kvm.
 
-Use the Arista-VEOS.xml and define it on kvm (virsh define Arista-VEOS.xml). You will need to download the Aboot iso and vEOS image from Arista as I cannot distribute that.
+Use the Arista-VEOS.xml and define it on kvm (virsh define Arista-VEOS.xml). You will need to download the Aboot iso and vEOS image from Arista as I cannot distribute that. You need to convert this vmdk image : qemu-img convert -o compat=1.1 -f vmdk -O qcow2 -c -p vEOS-lab-4.20.15M.vmdk vEOS-lab-4.20.15M.qcow2
 
 Place those images into your /var/lib/libvirt/images folder and correct the file versions in Arista-VEOS if needed. You will need to also change each virtual interface on the vm to point to your network config on kvm. Otherwise your interface/bridge name wont match mine and you will get an error. 
 
